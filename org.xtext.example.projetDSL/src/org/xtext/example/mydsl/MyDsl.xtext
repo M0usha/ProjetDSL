@@ -1,0 +1,67 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+	
+
+Automate:
+	program=Program
+;
+	
+Program: 
+	'start'
+	Init
+	stats += Statement*
+	'end'
+;
+
+Init:
+	'open browser'
+;
+
+Statement:
+	Instruction | Tab | Fonction | Verify | Foreach
+;
+
+Tab:
+	v=Variable '[' values+=STRING (', ' values+=STRING)* ']'
+;
+
+
+
+Instruction:
+	cmd=Commande obj=Objet? (param=(STRING) | param=ID)?
+;
+
+Fonction:
+	var=Variable ('countResult' | ('readtext(' (value=STRING) ')') | ('readurl(' (value=STRING) ')') )
+;
+
+
+Variable:
+	(('var')? name=ID '=')
+;
+
+Verify:
+	'verify' (compare=Compare | contains=Contains)
+;
+
+Compare:
+	( variable=ID '==' (value=ID | value=STRING) )
+;
+
+Contains:
+	'contains' obj=Objet (value=ID | value=STRING) 
+;
+
+Objet:
+	'link' | 'text' | 'button' | 'image' | 'all' | 'title' | 'combobox' | 'everything'
+;
+
+Commande:
+	'click' | 'uncheck' | 'search' | 'choose' | 'url' | 'check'
+;
+
+Foreach:
+	'foreach' value=ID stats+=Statement* 'endforeach'
+;

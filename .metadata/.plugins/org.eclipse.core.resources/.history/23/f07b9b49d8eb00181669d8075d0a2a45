@@ -1,0 +1,8 @@
+start
+	open browser
+	url "http://www.imt-atlantique.fr/fr"
+	click link "Toutes les actualités"
+	click image "alt=Accueil"
+	verify link "Toutes les actualités"
+
+end

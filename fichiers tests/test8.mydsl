@@ -1,0 +1,11 @@
+start
+	open browser
+	url "http://www.imt-atlantique.fr/fr/rechercher"
+	search "2007"
+	click button "Appliquer les filtres"
+	var countResultBefore = countResult
+	choose combobox "Le mois dernier"
+	click button "Appliquer les filtres"
+	var countResultAfter = countResult
+	verify countResultBefore==countResultAfter
+end

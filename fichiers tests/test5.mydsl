@@ -1,0 +1,9 @@
+start
+	open browser
+	url "http://www.imt-atlantique.fr/fr/formation/trouver-ma-formation"
+	uncheck everything
+	check "Anglais"
+	check "A domicile"
+	click button "Appliquer les critères"
+	verify contains text "Aucune formation trouvée répondant à vos critères"
+end

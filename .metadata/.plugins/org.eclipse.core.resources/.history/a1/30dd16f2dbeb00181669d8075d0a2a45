@@ -1,0 +1,35 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+	
+	
+Program: 
+	'start'
+	stats += Statement*
+	'end'
+;
+
+Statement:
+	Instruction | Declaration
+;
+
+Declaration:
+	'var' name=ID Fonction 
+;
+
+Fonction:
+	'count result' | 'readtext' (STRING) | 'readurl' (STRING)
+;
+
+Instruction:
+	cmd=Commande obj=Objet? param=(STRING)?
+;
+
+Objet:
+	'link' | 'text' | 'button' | 'image' | 'browser' | 'all' | 'title' | 'combobox'
+;
+
+Commande:
+	'verify' | 'click' | 'uncheck' | 'open' | 'search' | 'choose' | 'url' | 'check'
+;

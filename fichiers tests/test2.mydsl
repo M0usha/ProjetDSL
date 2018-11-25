@@ -1,0 +1,6 @@
+start
+	open browser
+	url "http://www.imt-atlantique.fr/fr"
+	click link "Toutes les actualités"
+	verify contains link "Accueil"
+end

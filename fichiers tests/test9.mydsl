@@ -1,0 +1,10 @@
+start
+	open browser
+	url "http://www.imt-atlantique.fr/fr"
+	var categories = ["Communiqué de presse", "Dossiers de presse", "Visuels pour la presse", "La presse en parle", "Tribunes de presse", "Les palmarès"]
+	foreach categories
+		click link categorie
+		verify contains image "Imprimer"
+		click image "Imprimer"
+	endforeach
+end

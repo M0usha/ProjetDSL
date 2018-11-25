@@ -1,0 +1,10 @@
+start
+	open browser
+	url "http://www.imt-atlantique.fr/fr"
+	var titre = readtext("actu_home_ctner_inner_cell1_titre")
+	var addresse = readurl("actu_home_ctner_inner_cell1_titre")
+	url "http://www.imt-atlantique.fr/fr/rechercher"
+	search titre
+	click button "Appliquer les filtres"
+	verify contains link addresse
+end
